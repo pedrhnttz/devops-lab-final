@@ -1,6 +1,6 @@
 name: Continuos Integration
 
-on: [push, pull-request]
+on: push
 
 jobs:
   build:
@@ -12,4 +12,3 @@ jobs:
 
       - name: create docker image
         run: docker build -t meudockerfile .
-        
