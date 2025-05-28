@@ -4,16 +4,17 @@ on:
   push:
     branches: ["*"]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: pedrhnttz/devops-lab-final:${{ github.sha }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Chechout repository
         uses: actions/checkout@v4
         #
-      - name: Build docker img
+      - name: Build docker image
         run: docker build . --file Dockerfile --tag pedrhnttz/devops-lab-final:${{ github.sha }}
-        #
-      - name: Push docker img to docker hub
-        run: docker push pedrhnttz/devops-lab-final:${{ github.sha }}
