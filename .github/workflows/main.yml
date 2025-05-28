@@ -17,5 +17,5 @@ jobs:
         run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}:${{ github.sha }}
       - name: push image to docker hub
         run: |
-          docker login -u pedrlk -p ${{  secrets.DOCKER_HUB_TOKEN }}
-          docker push pedrlk/devops-docker:latest
+          docker login -u pedrlk -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push ${{ env.IMAGE_NAME }}:${{ github.sha }}
