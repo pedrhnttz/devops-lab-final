@@ -4,34 +4,14 @@ on:
   push:
     branches: ["*"]
 
-permissions:
-  contents: 'read'
-  packages: 'write'
-
-env:
-  IMAGE_NAME: pedrhnttz/devops-lab-final
-
 jobs:
   build: 
     runs-on: ubuntu-latest
-
     steps:
-      - name: Chechout repository
+      - name: checkout repository
         uses: actions/checkout@v4
-        #
-      - name: Build docker image
-        run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}:${{ github.sha }}
-        #
-      - name: Login no Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-        #
-      - name: Push da Imagem Docker para o Docker Hub
-        run: docker push ${{ env.IMAGE_NAME }}:${{ github.sha }}
-        #
-      - name: Push da Imagem Docker com tag 'latest'
+      - name: build docker image
+        run: docker build . --file Dockerfile --tag pedrlk/devops-docker:latest
+      - name: push image to docker hub
         run: |
-          docker tag ${{ env.IMAGE_NAME }}:${{ github.sha }} ${{ env.IMAGE_NAME }}:latest
-          docker push ${{ env.IMAGE_NAME }}:latest
+          docker push pedrlk/devops-docker:latest
