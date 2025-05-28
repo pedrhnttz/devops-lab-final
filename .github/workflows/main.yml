@@ -42,6 +42,6 @@ jobs:
         #
       - name: Puxar Imagem Docker para Teste
         run: docker pull pedrhnttz/devops-lab-final:${{ github.sha }}
-        #
+        # 
       - name: Rodar Testes Unitários no Container Puxado
         run: docker-compose run api python -m unittest discover
