@@ -13,4 +13,4 @@ jobs:
         uses: actions/checkout@v4
         #
       - name: Build docker img
-        run: docker build -f meudockerfile .
+        run: docker build -t meudockerfile .
