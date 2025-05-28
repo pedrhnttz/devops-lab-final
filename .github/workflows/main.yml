@@ -9,7 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         #
-      - name: Construir Imagem Docker
+      - name: Build docker img
         run: docker build . --file Dockerfile --tag pedrhnttz/devops-lab-final:${{ github.sha }}
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        #
+      - name: Run tests
+        uses: docker-compose run api python -m unittest discover
