@@ -14,4 +14,5 @@ jobs:
         run: docker build . --file Dockerfile --tag pedrlk/devops-docker:latest
       - name: push image to docker hub
         run: |
+          docker login -u pedrlk -p ${{  secrets.DOCKER_HUB_TOKEN }}
           docker push pedrlk/devops-docker:latest
