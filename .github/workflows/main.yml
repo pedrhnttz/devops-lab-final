@@ -18,7 +18,7 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
       - name: build docker image
-        run: docker build -t imgDockerfile .
+        run: docker build -t imgdockerfile .
 
 
   test:
@@ -28,4 +28,4 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
       - name: run tests
-        run: docker compose run imgDockerfile python -m unittest discover
+        run: docker compose run imgdockerfile python -m unittest discover
