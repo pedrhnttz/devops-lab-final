@@ -41,7 +41,7 @@ jobs:
       - name: bring up services with docker compose
         run:  docker compose up -d
       - name: run tests
-        run: docker-compose run api python -m unittest discover
+        run: docker compose exec api python -m unittest discover
       - name: teardown docker  compose services
         if: always()
         run: docker compose down
