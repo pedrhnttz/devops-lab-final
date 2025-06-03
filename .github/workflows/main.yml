@@ -38,5 +38,12 @@ jobs:
         run: |
           docker login -u pedrlk -p ${{ secrets.DOCKER_HUB_TOKEN }}
           docker pull ${{ env.IMAGE_TAG }}
+      - name: bring up services with docker compose
+        run: |
+          docker compose up -d
+          sleep 15
       - name: run tests
         run: docker-compose run api python -m unittest discover
+      - name: teardown docker  compose services
+        if: always()
+        run: docker compose down
