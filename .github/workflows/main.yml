@@ -4,13 +4,6 @@ on:
   push:
     branches: ["*"]
 
-permissions:
-  contents: 'read'
-  packages: 'write'
-
-env:
-  IMAGE_NAME: pedrlk/devops-docker
-
 jobs:
   build: 
     runs-on: ubuntu-latest
