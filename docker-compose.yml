@@ -1,6 +1,7 @@
 version: '3'
 services:
   api:
+    image: pedrlk/devops-docker:${IMAGE_TAG:-latest}
     build: .
     ports:
       - "1313:1313"
