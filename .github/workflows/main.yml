@@ -4,12 +4,18 @@ on:
   push:
     branches: ["*"]
 
+permissions:
+  contents: 'read'
+  packages: 'write'
+
 env:
   IMAGE_NAME: pedrlk/devops-docker
 
 jobs:
   build: 
     runs-on: ubuntu-latest
+    outputs:
+      image_full_tag: ${{ env.IMAGE_NAME }}:${{ github.sha }}
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
