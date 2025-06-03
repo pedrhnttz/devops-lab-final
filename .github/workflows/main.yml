@@ -15,7 +15,7 @@ jobs:
   build: 
     runs-on: ubuntu-latest
     outputs:
-      image_full_tag: ${{ env.IMAGE_NAME }}:${{ github.sha }}
+      image_full_tag: ${{ env.IMAGE_NAME }}:latest
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v4
       - name: pull docker image
         run: |
-          docker login -u pedrlk -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker login -u pedrlk --password-stdin ${{ secrets.DOCKER_HUB_TOKEN }}
           docker pull ${{ env.IMAGE_TAG }}
       - name: run tests
         run: docker-compose run api python -m unittest discover
