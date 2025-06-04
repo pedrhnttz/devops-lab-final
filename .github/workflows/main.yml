@@ -11,7 +11,7 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v3
       - name: build docker image
-        run: docker build -t imgdockerfile .
+        run: docker build -t devopslabfinal .
 
 
   test:
@@ -21,4 +21,4 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v3
       - name: run tests
-        run: docker compose run imgdockerfile python -m unittest discover
+        run: docker compose run devopslabfinal python -m unittest discover
