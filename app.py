@@ -20,7 +20,7 @@ def home():
 
 @app.route('/items', methods=['GET'])
 def get_items():
-    return jsonify(items=["item1", "item2", "item3"])
+    return jsonify(items=["item1", "item2", "item3", "item4"])
 
 @app.route('/login', methods=['POST'])
 def login():
