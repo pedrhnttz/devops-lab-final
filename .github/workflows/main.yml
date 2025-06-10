@@ -24,6 +24,7 @@ jobs:
         run: docker compose run imglabfinal python -m unittest discover
 
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to production
